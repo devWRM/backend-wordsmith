@@ -6,6 +6,8 @@ class CreateWords < ActiveRecord::Migration[6.0]
       t.string :definition
       t.string :sentences
 
+      t.belongs_to :subject
+
       t.timestamps
     end
   end

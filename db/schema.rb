@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 2021_02_26_101806) do
     t.string "pos"
     t.string "definition"
     t.string "sentences"
+    t.bigint "subject_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_words_on_subject_id"
   end
 
 end
