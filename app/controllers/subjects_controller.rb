@@ -36,6 +36,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   def destroy
     @subject.destroy
+    render json: @subject
   end
 
   private
