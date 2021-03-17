@@ -1,8 +1,10 @@
 class WordsController < ApplicationController
-  before_action :set_word, only: [:show, :update, :destroy]
+  # before_action :set_word, only: [:show, :update, :destroy]
+  before_action :set_subject
 
   # GET /words
   def index
+  # binding.pry
     @words = Word.all
 
     render json: @words
@@ -10,15 +12,19 @@ class WordsController < ApplicationController
 
   # GET /words/1
   def show
+    @word = Word.find(params[:id])
     render json: @word
   end
 
   # POST /words
   def create
-    @word = Word.new(word_params)
+  # binding.pry
+    # @word = Word.new(word_params)
+    @word = @subject.words.new(word_params)
 
     if @word.save
-      render json: @word, status: :created, location: @word
+      # render json: @word, status: :created, location: @word
+      render json: @subject
     else
       render json: @word.errors, status: :unprocessable_entity
     end
@@ -26,6 +32,7 @@ class WordsController < ApplicationController
 
   # PATCH/PUT /words/1
   def update
+    @word = Word.find(params[:id])
     if @word.update(word_params)
       render json: @word
     else
@@ -35,13 +42,18 @@ class WordsController < ApplicationController
 
   # DELETE /words/1
   def destroy
+    @word = Word.find(params[:id])
     @word.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_word
-      @word = Word.find(params[:id])
+    # def set_word
+    #   @word = Word.find(params[:id])
+    # end
+
+    def set_subject
+      @subject = Subject.find_by_id(params['subject_id'])
     end
 
     # Only allow a trusted parameter "white list" through.
