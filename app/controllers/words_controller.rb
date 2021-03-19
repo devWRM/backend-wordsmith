@@ -44,6 +44,7 @@ class WordsController < ApplicationController
   def destroy
     @word = Word.find(params[:id])
     @word.destroy
+    render json: @subject
   end
 
   private
