@@ -22,12 +22,22 @@ class WordsController < ApplicationController
     # @word = Word.new(word_params)
     @word = @subject.words.new(word_params)
 
-    if @word.save
-      # render json: @word, status: :created, location: @word
+    if @subject.word_check(@word) == true
+      @word.save
       render json: @subject
     else
-      render json: @word.errors, status: :unprocessable_entity
+      render json: {errors: 'That word is already listed for this subject.'}
+      # render json: {errors: @word.spelling + " is already listed for this subject."}
     end
+
+
+
+    # if @word.save
+    #   # render json: @word, status: :created, location: @word
+    #   render json: @subject
+    # else
+    #   render json: @word.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /words/1
