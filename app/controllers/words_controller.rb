@@ -22,7 +22,7 @@ class WordsController < ApplicationController
     # @word = Word.new(word_params)
     @word = @subject.words.new(word_params)
 
-    if @subject.word_check(@word) == true
+    if !@subject.word_check(@word)
       @word.save
       render json: @subject
     else
