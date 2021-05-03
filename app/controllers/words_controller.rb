@@ -4,7 +4,6 @@ class WordsController < ApplicationController
 
   # GET /words
   def index
-  # binding.pry
     @words = Word.all
 
     render json: @words
@@ -18,17 +17,26 @@ class WordsController < ApplicationController
 
   # POST /words
   def create
-  # binding.pry
     # @word = Word.new(word_params)
-    @word = @subject.words.new(word_params)
+    @word = Word.new(word_params)
 
-    if !@subject.word_check(@word)
+    if @subject.words.include?(@word.spelling)
+      render json: {errors: 'That word is already listed for this subject.'} 
+    else
+      @word = @subject.words.new(word_params)
       @word.save
       render json: @subject
-    else
-      render json: {errors: 'That word is already listed for this subject.'}
-      # render json: {errors: @word.spelling + " is already listed for this subject."}
     end
+
+    # @word = @subject.words.new(word_params)
+
+    # if @subject.word_check(@word) == true
+    #   @word.save
+    #   render json: @subject
+    # else
+    #   render json: {errors: 'That word is already listed for this subject.'}
+    #   # render json: {errors: @word.spelling + " is already listed for this subject."}
+    # end
 
 
 
