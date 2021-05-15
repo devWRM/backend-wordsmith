@@ -1,4 +1,5 @@
 class Subject < ApplicationRecord
+    belongs_to :User
 
     has_many :words, :dependent => :destroy
     validates :name, presence: true
