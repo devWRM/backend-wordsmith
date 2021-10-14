@@ -21,6 +21,7 @@ Back End
 
 ### How to run Wordsmith
 
+* You must have Ruby, Rails, and React installed
 * Fork and clone the front end and back end
 
     https://github.com/devWRM/frontend-wordsmith
