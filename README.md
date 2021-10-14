@@ -2,30 +2,41 @@
 
 [Live Demo](https://frontend-wordsmith.herokuapp.com "Live Demo")
 
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### About Wordsmith
 
-Things you may want to cover:
+Wordsmith enables English language learners to input the English vocabulary words they're learning, grouped by subject. After the user inputs words, they can pick a subject (ex. banking or restaurant) and review all the English words associated with that subject. This is convenient when a user needs to run an errand or attend an event. The subject of that errand or event can be pulled up to review the associated words ahead of time to prepare the user to confidently understand and communicate in English. If the user needs a little assistance, they can consult the subject word list during as well. 
 
-* Ruby version
 
-* System dependencies
+### Tech Stack
 
-* Configuration
+Front End
+* React
+    * Redux
 
-* Database creation
+Back End
+* Ruby on Rails
+    * Postgresql
 
-* Database initialization
 
-* How to run the test suite
+### How to run Wordsmith
 
-* Services (job queues, cache servers, search engines, etc.)
+* Fork and clone the front end and back end
 
-* Deployment instructions
+    https://github.com/devWRM/frontend-wordsmith
+    https://github.com/devWRM/backend-wordsmith
+    
+* cd into the back end directory and run: rails s
+* cd into the front end directory and run: npm start 
+    Then enter y (yes run it on a different port)
 
-* ...
+
+### Upcoming Features
+
+* User login
+* Users can add and delete Resources
+* Search feature for Subjects and Words
+
 
 ### Front End
 
